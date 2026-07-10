@@ -1,0 +1,22 @@
+{
+  "name": "carebridge-india-turkey",
+  "version": "0.8.0",
+  "private": true,
+  "description": "Mobile-first medical tourism PWA for African patients comparing providers, flights, and accommodation in India and Turkey.",
+  "type": "module",
+  "scripts": {
+    "start": "python -m http.server 4173",
+    "start:node": "node server.mjs",
+    "check": "node --check app.js",
+    "preview": "python -m http.server 4173"
+  },
+  "keywords": [
+    "medical-tourism",
+    "pwa",
+    "healthcare",
+    "india",
+    "turkey",
+    "travel"
+  ],
+  "license": "UNLICENSED"
+}

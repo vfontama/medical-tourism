@@ -1,0 +1,19 @@
+# Runtime logs and tunnel binaries
+cloudflared*.log
+cloudflared.exe
+server.log
+server.err
+
+# Local environment
+.env
+.env.*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dependency folders if the app is later converted to a package-managed build
+node_modules/
+dist/
+build/

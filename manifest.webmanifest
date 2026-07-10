@@ -1,0 +1,17 @@
+{
+  "name": "CareBridge India + Turkey",
+  "short_name": "CareBridge",
+  "description": "Medical tourism planner for African patients seeking care in India.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#eef7f3",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

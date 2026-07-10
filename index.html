@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f766e" />
+    <title>CareBridge India + Turkey</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css?v=8" />
+  </head>
+  <body>
+    <section class="access-gate" id="accessGate" aria-label="Tester access">
+      <div class="access-panel">
+        <div class="access-mark">+</div>
+        <h2>CareBridge tester access</h2>
+        <p>Enter the test passcode from the app owner to preview this prototype.</p>
+        <form id="accessForm">
+          <label>
+            Passcode
+            <input id="accessCode" type="password" autocomplete="one-time-code" placeholder="Enter passcode" />
+          </label>
+          <button class="primary-button" type="submit">Unlock app</button>
+        </form>
+      </div>
+    </section>
+    <main class="app-shell">
+      <section class="phone">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Africa to India and Turkey care travel</p>
+            <h1>CareBridge India + Turkey</h1>
+          </div>
+          <button class="icon-button" id="helpButton" aria-label="Open safety notes">?</button>
+        </header>
+
+        <section class="search-panel" aria-label="Provider search">
+          <label for="needSearch">What care do you need?</label>
+          <div class="search-row">
+            <input id="needSearch" type="search" placeholder="Cancer, gynecology, pediatrics..." autocomplete="off" />
+            <button id="clearSearch" class="ghost-button">Clear</button>
+          </div>
+          <div class="chips" id="specialtyChips" aria-label="Specialty filters"></div>
+          <div class="select-grid">
+            <label>
+              Leaving from
+              <select id="originSelect"></select>
+            </label>
+            <label>
+              Treatment country
+              <select id="countrySelect">
+                <option value="any">India + Turkey</option>
+                <option value="India">India</option>
+                <option value="Turkey">Turkey</option>
+              </select>
+            </label>
+          </div>
+          <div class="select-grid">
+            <label>
+              Budget feel
+              <select id="budgetSelect">
+                <option value="any">Any</option>
+                <option value="low">Lower cost</option>
+                <option value="medium">Medium</option>
+                <option value="high">Premium</option>
+              </select>
+            </label>
+            <label>
+              Sort by
+              <select id="sortSelect">
+                <option value="rating">Best rated</option>
+                <option value="cost">Lower cost first</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <nav class="tabs" aria-label="App sections">
+          <button class="tab active" data-view="providers">Clinics</button>
+          <button class="tab" data-view="travel"><span>Book</span><span>Flights</span></button>
+          <button class="tab" data-view="stays"><span>Book</span><span>Hotels</span></button>
+          <button class="tab" data-view="plan">Trip</button>
+        </nav>
+
+        <section class="content">
+          <section id="providersView" class="view active" aria-label="Doctors and clinics">
+            <div class="summary-strip">
+              <span id="matchCount">0 matches</span>
+              <span id="selectedProviderLabel">Select a provider</span>
+            </div>
+            <div id="providerList" class="card-list"></div>
+          </section>
+
+          <section id="travelView" class="view" aria-label="Flights">
+            <div class="section-heading">
+              <h2>Book flights</h2>
+              <p id="flightContext">Choose a provider to compare routes.</p>
+            </div>
+            <div id="flightBookingPanel" class="booking-panel"></div>
+            <div id="flightBookingStatus" class="booking-status"></div>
+            <div id="flightList" class="card-list"></div>
+          </section>
+
+          <section id="staysView" class="view" aria-label="Accommodation">
+            <div class="section-heading">
+              <h2>Book hotels</h2>
+              <p id="stayContext">Hotels and apartments near the selected provider.</p>
+            </div>
+            <div id="stayBookingPanel" class="booking-panel"></div>
+            <div id="stayBookingStatus" class="booking-status"></div>
+            <div id="stayList" class="card-list"></div>
+          </section>
+
+          <section id="planView" class="view" aria-label="Trip plan">
+            <div class="plan-card">
+              <h2>Your care travel plan</h2>
+              <div id="planSummary" class="plan-summary"></div>
+              <form id="bookingForm">
+                <label>
+                  Patient or guardian name
+                  <input name="name" required placeholder="Full name" />
+                </label>
+                <label>
+                  WhatsApp number
+                  <input name="phone" required placeholder="+233..." />
+                </label>
+                <label>
+                  Notes for coordinator
+                  <textarea name="notes" rows="3" placeholder="Diagnosis, travel window, language, mobility needs"></textarea>
+                </label>
+                <button class="primary-button" type="submit">Request care concierge</button>
+              </form>
+              <p class="fine-print">This prototype prepares a request. A production app should connect to provider, airline, hotel, and payment APIs before confirming bookings.</p>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="helpDialog">
+      <button class="icon-button dialog-close" id="closeHelp" aria-label="Close safety notes">x</button>
+      <h2>Safety notes</h2>
+      <p>CareBridge helps compare options, but it does not provide medical advice. Patients should verify credentials, request a written treatment estimate, confirm visa requirements, and speak with a licensed clinician before traveling.</p>
+      <p>Ratings and cost bands are feedback-style signals for comparison, not clinical quality guarantees or exact prices.</p>
+    </dialog>
+
+    <dialog id="bookingDialog">
+      <button class="icon-button dialog-close" id="closeBooking" aria-label="Close booking form">x</button>
+      <h2 id="bookingTitle">Book option</h2>
+      <div id="bookingSummary" class="modal-summary"></div>
+      <form id="optionBookingForm">
+        <label>
+          Lead traveler / guest
+          <input name="travelerName" required placeholder="Full name" />
+        </label>
+        <div class="select-grid">
+          <label>
+            Adults
+            <select name="adults">
+              <option>1</option>
+              <option selected>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </label>
+          <label>
+            Children
+            <select name="children">
+              <option selected>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+        </div>
+        <label id="dateField">
+          Preferred date
+          <input name="date" required type="date" />
+        </label>
+        <label>
+          WhatsApp for booking updates
+          <input name="contact" required placeholder="+234..." />
+        </label>
+        <label>
+          Special requests
+          <textarea name="requests" rows="3" placeholder="Wheelchair help, caregiver room, flexible dates"></textarea>
+        </label>
+        <button class="primary-button" type="submit">Confirm booking request</button>
+      </form>
+      <p class="fine-print">Prototype booking only. A production app should connect to airline, hotel, payment, passport, visa, and cancellation systems before issuing a real ticket or reservation.</p>
+    </dialog>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js?v=8"></script>
+  </body>
+</html>
