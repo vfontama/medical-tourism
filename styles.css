@@ -292,6 +292,28 @@ textarea:focus {
   gap: 6px;
 }
 
+.journey-actions {
+  display: none;
+  justify-content: flex-end;
+  padding: 4px 12px 0;
+}
+
+body[data-view="travel"] .journey-actions,
+body[data-view="stays"] .journey-actions,
+body[data-view="plan"] .journey-actions {
+  display: flex;
+}
+
+body[data-view="travel"] .search-panel,
+body[data-view="stays"] .search-panel,
+body[data-view="plan"] .search-panel {
+  display: none;
+}
+
+.journey-actions .ghost-button {
+  min-height: 40px;
+}
+
 .flow-controls {
   display: grid;
   grid-template-columns: minmax(78px, auto) minmax(0, 1fr) minmax(78px, auto);
