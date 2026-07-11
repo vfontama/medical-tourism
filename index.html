@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 16.2 seconds
+Output:
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,7 +9,7 @@
     <meta name="theme-color" content="#0f766e" />
     <title>CareBridge India + Turkey</title>
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="styles.css?v=8" />
+    <link rel="stylesheet" href="styles.css?v=9" />
   </head>
   <body>
     <section class="access-gate" id="accessGate" aria-label="Tester access">
@@ -30,7 +33,10 @@
             <p class="eyebrow">Africa to India and Turkey care travel</p>
             <h1>CareBridge India + Turkey</h1>
           </div>
-          <button class="icon-button" id="helpButton" aria-label="Open safety notes">?</button>
+          <div class="top-actions">
+            <button class="icon-button" id="themeButton" aria-label="Switch to dark mode" title="Switch theme">◐</button>
+            <button class="icon-button" id="helpButton" aria-label="Open safety notes">?</button>
+          </div>
         </header>
 
         <section class="search-panel" aria-label="Provider search">
@@ -39,7 +45,10 @@
             <input id="needSearch" type="search" placeholder="Cancer, gynecology, pediatrics..." autocomplete="off" />
             <button id="clearSearch" class="ghost-button">Clear</button>
           </div>
-          <div class="chips" id="specialtyChips" aria-label="Specialty filters"></div>
+          <label>
+            Medical specialization
+            <select id="specialtySelect" aria-label="Medical specialization"></select>
+          </label>
           <div class="select-grid">
             <label>
               Leaving from
@@ -81,6 +90,12 @@
           <button class="tab" data-view="plan">Trip</button>
         </nav>
 
+        <div class="flow-controls" aria-label="Booking journey controls">
+          <button class="ghost-button flow-button" id="backButton" type="button">Back</button>
+          <span id="flowProgress" aria-live="polite">Step 1 of 4</span>
+          <button class="primary-button flow-button" id="nextButton" type="button">Next</button>
+        </div>
+
         <section class="content">
           <section id="providersView" class="view active" aria-label="Doctors and clinics">
             <div class="summary-strip">
@@ -91,10 +106,18 @@
           </section>
 
           <section id="travelView" class="view" aria-label="Flights">
-            <div class="section-heading">
+              <div class="section-heading">
               <h2>Book flights</h2>
               <p id="flightContext">Choose a provider to compare routes.</p>
             </div>
+            <label class="inline-select">
+              Sort flights
+              <select id="flightSortSelect">
+                <option value="relevance">Best match</option>
+                <option value="price">Lowest price</option>
+                <option value="duration">Shortest total time</option>
+              </select>
+            </label>
             <div id="flightBookingPanel" class="booking-panel"></div>
             <div id="flightBookingStatus" class="booking-status"></div>
             <div id="flightList" class="card-list"></div>
@@ -124,12 +147,16 @@
                   <input name="phone" required placeholder="+233..." />
                 </label>
                 <label>
+                  Email address
+                  <input name="email" required type="email" autocomplete="email" placeholder="you@example.com" />
+                </label>
+                <label>
                   Notes for coordinator
                   <textarea name="notes" rows="3" placeholder="Diagnosis, travel window, language, mobility needs"></textarea>
                 </label>
                 <button class="primary-button" type="submit">Request care concierge</button>
               </form>
-              <p class="fine-print">This prototype prepares a request. A production app should connect to provider, airline, hotel, and payment APIs before confirming bookings.</p>
+              <p class="fine-print">Confirmation opens in your email app and WhatsApp, so you stay in control of sending it. A production app should use a secure concierge service for automatic messages and booking confirmations.</p>
             </div>
           </section>
         </section>
@@ -190,6 +217,7 @@
     </dialog>
 
     <div id="toast" role="status" aria-live="polite"></div>
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=9"></script>
   </body>
 </html>
+
