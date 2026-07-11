@@ -1,4 +1,4 @@
-name: Deploy CareBridge preview
+name: Deploy CareBridge phone preview
 
 on:
   push:
