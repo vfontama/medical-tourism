@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 16.8 seconds
+Output:
 :root {
   --bg: #eef7f3;
   --ink: #10211f;
@@ -14,6 +17,20 @@
   color-scheme: light;
 }
 
+body[data-theme="dark"] {
+  --bg: #101817;
+  --ink: #edf7f4;
+  --muted: #b4c3bf;
+  --teal: #38bdb2;
+  --teal-dark: #a5eee7;
+  --gold: #efbd52;
+  --line: #38504b;
+  --card: #1a2523;
+  --soft: #121c1a;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.36);
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -23,6 +40,24 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+body[data-theme="dark"] input,
+body[data-theme="dark"] select,
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] .ghost-button,
+body[data-theme="dark"] .booking-panel,
+body[data-theme="dark"] .modal-summary {
+  background: #202d2a;
+  color: var(--ink);
+}
+
+body[data-theme="dark"] .tab.active,
+body[data-theme="dark"] .action-link.secondary,
+body[data-theme="dark"] .badge,
+body[data-theme="dark"] .stat {
+  background: #243a36;
+  color: var(--teal-dark);
 }
 
 html {
@@ -141,6 +176,12 @@ body.locked .access-gate {
   overflow: hidden;
 }
 
+.top-actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
 .topbar > div {
   min-width: 0;
 }
@@ -240,36 +281,6 @@ textarea:focus {
   padding: 0 12px;
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  overflow-x: visible;
-  padding: 14px 0 6px;
-  scrollbar-width: none;
-}
-
-.chip {
-  flex: 0 0 auto;
-  min-width: 104px;
-  min-height: 46px;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--muted);
-  border-radius: 999px;
-  padding: 10px 16px;
-  white-space: nowrap;
-  font-size: 0.95rem;
-  font-weight: 800;
-  text-align: center;
-}
-
-.chip.active {
-  background: var(--teal);
-  border-color: var(--teal);
-  color: #fff;
-}
-
 .select-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -282,6 +293,40 @@ textarea:focus {
   grid-template-columns: repeat(4, 1fr);
   padding: 12px 10px 6px;
   gap: 6px;
+}
+
+.flow-controls {
+  display: grid;
+  grid-template-columns: minmax(78px, auto) minmax(0, 1fr) minmax(78px, auto);
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 12px;
+}
+
+.flow-controls > span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.flow-button {
+  min-height: 42px;
+  padding: 0 10px;
+}
+
+.flow-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.inline-select {
+  margin-bottom: 12px;
+}
+
+.inline-select select {
+  min-height: 46px;
+  padding: 10px 12px;
 }
 
 .tab {
@@ -454,6 +499,41 @@ textarea:focus {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px;
+}
+
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.choice-row > * {
+  flex: 1 1 145px;
+  min-height: 46px;
+}
+
+.details {
+  margin-top: 14px;
+  padding: 12px;
+  border-left: 3px solid var(--teal);
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.details strong {
+  color: var(--ink);
+}
+
+.details p:last-child,
+.details ol:last-child {
+  margin-bottom: 0;
+}
+
+.details ol {
+  padding-left: 20px;
 }
 
 .badge,
@@ -691,11 +771,6 @@ dialog::backdrop {
     font-size: 0.95rem;
   }
 
-  .chip[data-specialty="All"],
-  .chip[data-specialty="IVF"] {
-    min-width: 74px;
-  }
-
   .actions > *,
   .stat-row > * {
     flex: 1 1 100%;
@@ -747,3 +822,4 @@ dialog::backdrop {
     overflow: hidden;
   }
 }
+
