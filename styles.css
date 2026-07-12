@@ -310,6 +310,10 @@ body[data-view="plan"] .search-panel {
   display: none;
 }
 
+body[data-provider-selected="true"] .search-panel {
+  display: none;
+}
+
 .journey-actions .ghost-button {
   min-height: 40px;
 }
