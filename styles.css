@@ -372,8 +372,14 @@ body[data-provider-selected="true"] .search-panel {
 }
 
 .tab.active {
-  background: #e1f1ee;
-  color: var(--teal-dark);
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(15, 118, 110, 0.24);
+}
+
+.tab[aria-current="step"] {
+  outline: 2px solid rgba(15, 118, 110, 0.22);
+  outline-offset: 1px;
 }
 
 .content {
