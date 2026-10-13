@@ -76,6 +76,14 @@ body.locked {
   overflow: hidden;
 }
 
+body[data-theme="dark"] {
+  background: var(--bg);
+}
+
+body[data-theme="dark"] .phone {
+  background: var(--soft);
+}
+
 button,
 input,
 select,
